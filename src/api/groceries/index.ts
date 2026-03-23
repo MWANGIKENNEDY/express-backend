@@ -19,7 +19,7 @@ groceriesRouter.get('/', async (req: Request, res: Response) => {
 // GET /api/groceries/:id - Get specific grocery item
 groceriesRouter.get('/:id', async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const id = req.params.id as string;
     const item = await GroceryService.getItemById(id);
     
     if (!item) {
@@ -36,7 +36,7 @@ groceriesRouter.get('/:id', async (req: Request, res: Response) => {
 // GET /api/groceries/category/:category - Get items by category
 groceriesRouter.get('/category/:category', async (req: Request, res: Response) => {
   try {
-    const { category } = req.params;
+    const category = req.params.category as string;
     const items = await GroceryService.getItemsByCategory(category);
     res.json(items);
   } catch (error) {
@@ -86,7 +86,7 @@ groceriesRouter.post('/', async (req: Request, res: Response) => {
 // PUT /api/groceries/:id - Update grocery item
 groceriesRouter.put('/:id', async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const id = req.params.id as string;
     const item = await GroceryService.updateItem(id, req.body);
     
     if (!item) {
@@ -103,7 +103,7 @@ groceriesRouter.put('/:id', async (req: Request, res: Response) => {
 // DELETE /api/groceries/:id - Delete grocery item
 groceriesRouter.delete('/:id', async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const id = req.params.id as string;
     const deleted = await GroceryService.deleteItem(id);
     
     if (!deleted) {
