@@ -1,6 +1,5 @@
 // Express app setup (middleware, routes)
 import express from 'express';
-import { usersRouter } from './api/users/index.js';
 import { groceriesRouter } from './api/groceries/index.js';
 import { logger } from './utils/logger.js';
 
@@ -22,7 +21,6 @@ app.use((req, res, next) => {
 });
 
 // Routes
-app.use('/api/users', usersRouter);
 app.use('/api/groceries', groceriesRouter);
 
 // Health check

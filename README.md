@@ -24,4 +24,21 @@ src/
 
 ## Environment Variables
 
-- `DATABASE_URL` - Neon DB URL, JWT secret
+Copy `.env.example` to `.env` and fill in your values:
+
+- `DATABASE_URL` - Your Neon PostgreSQL database URL
+- `CLERK_PUBLISHABLE_KEY` - Your Clerk publishable key
+- `CLERK_SECRET_KEY` - Your Clerk secret key
+- `PORT` - Server port (default: 3000)
+
+## API Endpoints
+
+- `GET /api/groceries` - Get all grocery items
+- `GET /api/groceries/:id` - Get specific item
+- `POST /api/groceries` - Create new item
+- `PATCH /api/groceries/:id` - Update item
+- `DELETE /api/groceries/:id` - Delete item
+- `GET /api/groceries/purchased` - Get purchased items
+- `GET /api/groceries/unpurchased` - Get unpurchased items
+- `POST /api/groceries/clear-purchased` - Clear all purchased items
+- `GET /api/groceries/category/:category` - Get items by category

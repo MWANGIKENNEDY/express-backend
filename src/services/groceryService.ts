@@ -1,12 +1,12 @@
 // Services for grocery items business logic, DB queries
 import { db } from '../db/drizzle.js';
 import { groceryItems } from '../db/schema/groceryItems.js';
-import { eq } from 'drizzle-orm';
+import { desc, eq } from 'drizzle-orm';
 import type { GroceryItem, NewGroceryItem, GroceryItemUpdate } from '../models/groceryItemModel.js';
 
 export class GroceryService {
   static async getAllItems(): Promise<GroceryItem[]> {
-    return await db.select().from(groceryItems);
+    return await db.select().from(groceryItems).orderBy(desc(groceryItems.updated_at));
   }
 
   static async getItemById(id: string): Promise<GroceryItem | undefined> {
@@ -43,5 +43,10 @@ export class GroceryService {
 
   static async getUnpurchasedItems(): Promise<GroceryItem[]> {
     return await db.select().from(groceryItems).where(eq(groceryItems.purchased, false));
+  }
+
+  static async clearPurchasedItems(): Promise<{ deletedCount: number }> {
+    const result = await db.delete(groceryItems).where(eq(groceryItems.purchased, true));
+    return { deletedCount: result.rowCount };
   }
 }

@@ -1,0 +1,59 @@
+{
+  "expo": {
+    "name": "mobile-app",
+    "slug": "mobile-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "mobileapp",
+    "userInterfaceStyle": "automatic",
+    "web": {
+      "output": "server",
+      "favicon": "./assets/images/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      [
+      "@sentry/react-native/expo",
+      {
+        "url": "https://sentry.io/",
+        "project": "grocify",
+        "organization": "knsftwr"
+      }
+    ],
+      "@clerk/expo",
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff",
+          "dark": {
+            "backgroundColor": "#000000"
+          }
+        }
+      ],
+      "expo-web-browser",
+      [
+        "@sentry/react-native/expo",
+        {
+          "url": "https://sentry.io/",
+          "project": "grocify",
+          "organization": "knsftwr"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "ios": {
+      "bundleIdentifier": "com.anonymous.mobile-app"
+    },
+    "android": {
+      "package": "com.anonymous.mobileapp"
+    }
+  }
+}
